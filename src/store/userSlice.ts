@@ -3,6 +3,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  signInWithPopup,
+  OAuthProvider,
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, database } from "../lib/api/firebase";
@@ -21,6 +23,31 @@ export const userLogIn = createAsyncThunk<
   const result = userSnap.data() as IUser;
   return result;
 });
+
+export const logInPopup = createAsyncThunk<IUser>(
+  "user/loginpopup",
+  async () => {
+    const provider = new OAuthProvider("google.com");
+    const response = await signInWithPopup(auth, provider);
+    const userRef = doc(database, "users", `${response.user.uid}`);
+    const userSnap = await getDoc(userRef);
+
+    if (userSnap.exists()) {
+      const result = userSnap.data() as IUser;
+      return result;
+    } else {
+      await setDoc(userRef, {
+        email: response.user.email,
+        username: response.user.displayName || response.user.email,
+        quizees: [],
+      });
+      const userSnap = await getDoc(userRef);
+      const result = userSnap.data() as IUser;
+      return result;
+    }
+  }
+);
+
 export const userSignUp = createAsyncThunk<
   IUser,
   IAuth,
@@ -39,6 +66,7 @@ export const userSignUp = createAsyncThunk<
   const result = userSnap.data() as IUser;
   return result;
 });
+
 export const userPersistence = createAsyncThunk<IUser, string>(
   "user/persistence",
   async (uid) => {
@@ -116,6 +144,24 @@ const userSlice = createSlice({
       }
     );
     builder.addCase(userPersistence.rejected, (state: IUser) => {
+      state.email = "";
+      state.username = "";
+      state.quizees = [];
+      state.isLoading = false;
+    });
+    builder.addCase(logInPopup.pending, (state: IUser, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(
+      logInPopup.fulfilled,
+      (state: IUser, action: PayloadAction<IUser>) => {
+        state.email = action.payload.email;
+        state.username = action.payload.username;
+        state.quizees = action.payload.quizees;
+        state.isLoading = false;
+      }
+    );
+    builder.addCase(logInPopup.rejected, (state: IUser) => {
       state.email = "";
       state.username = "";
       state.quizees = [];

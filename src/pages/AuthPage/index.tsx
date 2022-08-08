@@ -1,10 +1,12 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import {
   AuthTitle,
   AuthForm,
   AuthDivider,
   AuthSubtitle,
 } from "../../components/Auth";
+import AuthProviders from "../../components/Auth/AuthProviders";
+
 import { styles } from "./styles";
 
 const AuthPage = () => {
@@ -15,9 +17,7 @@ const AuthPage = () => {
       <Box sx={styles.divider}>
         <AuthDivider />
       </Box>
-      <Button variant="outlined" sx={{ mt: "16px" }}>
-        Continue with Google
-      </Button>
+      <AuthProviders />
       <Box sx={{ mt: "56px" }}>
         <AuthSubtitle />
       </Box>

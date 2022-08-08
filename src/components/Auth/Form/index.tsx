@@ -61,7 +61,9 @@ const AuthForm = () => {
         color="primary"
         disabled={!(email && password)}
       >
-        <Typography>{isLogin ? "Login" : "Sign Up"}</Typography>
+        <Typography variant="button">
+          {isLogin ? "Login" : "Sign Up"}
+        </Typography>
       </Button>
     </FormControl>
   );
