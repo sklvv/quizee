@@ -30,7 +30,7 @@ const UserActions = () => {
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
-      width="20%"
+      width="20rem"
     >
       <ActionButton icon="near_me" title="Discover" />
       <ActionButton icon="format_list_bulleted" title="Library" />

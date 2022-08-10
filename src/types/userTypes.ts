@@ -3,7 +3,10 @@ import type { IQuizee } from "./quizeeTypes";
 export interface IUser {
   email: string;
   username: string;
-  quizees: IQuizee[];
+  quizees: {
+    user: IQuizee[];
+    favourite: IQuizee[];
+  };
   isLoading?: boolean;
 }
 export interface IAuth {
