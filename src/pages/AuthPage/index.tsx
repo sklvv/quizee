@@ -4,8 +4,8 @@ import {
   AuthForm,
   AuthDivider,
   AuthSubtitle,
-} from "../../components/Auth";
-import AuthProviders from "../../components/Auth/AuthProviders";
+  AuthProviders,
+} from "../../features/auth/ui";
 
 import { styles } from "./styles";
 

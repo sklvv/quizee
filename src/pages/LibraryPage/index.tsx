@@ -1,7 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
-import Quizees from "../../components/Library/Quizees";
-import Search from "../../components/Library/Search";
+import { Search, Quizees } from "../../features/library";
 
 const LibraryPage = () => {
   return (
