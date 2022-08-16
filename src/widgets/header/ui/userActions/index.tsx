@@ -2,8 +2,10 @@ import { Box, Icon, IconButton, Menu, MenuItem } from "@mui/material";
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../../shared/lib/hooks";
-import { logOut } from "../../model";
+import { useAppDispatch } from "@/shared/lib/hooks";
+
+import { logOut } from "@/widgets/header";
+
 import ActionButton from "./ActionButton";
 
 const UserActions = () => {

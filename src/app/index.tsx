@@ -1,13 +1,11 @@
 import { ThemeProvider } from "@mui/material";
-
-import { useAppDispatch, useAppSelector } from "../shared/lib/hooks";
-import { darkTheme, theme } from "../shared/config/theme";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
+import { darkTheme, theme } from "@/shared/config/theme";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../shared/config/";
-import { userPersistence } from "../features/auth/model";
-
-import Loader from "../shared/ui/loader";
-import Routing from "../pages";
+import { auth } from "@/shared/config/";
+import { userPersistence } from "@/features/auth";
+import Loader from "@/shared/ui/loader";
+import Routing from "@/pages";
 import { Suspense } from "react";
 function App() {
   const { isDarkTheme } = useAppSelector((state) => state.theme);

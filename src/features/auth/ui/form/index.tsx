@@ -1,8 +1,8 @@
 import { TextField, Button, Typography, FormControl } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../shared/lib/hooks";
-import { userLogIn, userSignUp } from "../../../../features/auth/model";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
+import { userLogIn, userSignUp } from "../..";
 
 const AuthForm = () => {
   const { username, isLoading } = useAppSelector((state) => state.user);

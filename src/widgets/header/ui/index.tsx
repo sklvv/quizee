@@ -1,7 +1,7 @@
 import { AppBar, Toolbar } from "@mui/material";
-import { useAppSelector } from "../../../shared/lib/hooks";
+import { useAppSelector } from "@/shared/lib/hooks";
 
-import Layout from "../../../shared/ui/layout";
+import Layout from "@/shared/ui/layout";
 import Logo from "./logo";
 import UserActions from "./userActions";
 

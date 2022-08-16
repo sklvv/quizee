@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { useAppSelector } from "../../../../shared/lib/hooks";
-import QuizeeCard from "../../../../entities/quizee/ui/QuizeeCard";
+import { useAppSelector } from "@/shared/lib/hooks";
+import QuizeeCard from "@/entities/quizee/ui/QuizeeCard";
 
 const Quizees = () => {
   const { favourite, user } = useAppSelector((state) => state.user.quizees);

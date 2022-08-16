@@ -8,7 +8,7 @@ export interface IQuizee {
   title: string;
   questions: IQuestion[];
 }
-interface IQuestion {
+export interface IQuestion {
   queImgUrl: string | null;
   answerOption: "single" | "multiple" | null;
   answerVariants: [string, string, string, string] | [string, string];

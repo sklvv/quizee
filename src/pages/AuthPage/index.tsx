@@ -1,11 +1,12 @@
 import { Box } from "@mui/material";
+
 import {
-  AuthTitle,
-  AuthForm,
   AuthDivider,
-  AuthSubtitle,
+  AuthForm,
+  AuthTitle,
   AuthProviders,
-} from "../../features/auth/ui";
+  AuthSubtitle,
+} from "@/features/auth";
 
 import { styles } from "./styles";
 

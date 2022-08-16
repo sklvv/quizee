@@ -1,7 +1,7 @@
 import { Button, Typography } from "@mui/material";
-import { useAppDispatch } from "../../../../shared/lib/hooks";
+import { useAppDispatch } from "@/shared/lib/hooks";
 
-import { logInPopup } from "../../../../features/auth/model";
+import { logInPopup } from "../..";
 
 const AuthProviders = () => {
   const dispatch = useAppDispatch();

@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Header from "../widgets/header/ui";
-import { PrivateRoute } from "../shared/lib/hocs";
+import { Header } from "@/widgets/header";
+import { PrivateRoute } from "@/shared/lib/hocs";
 import AuthPage from "./AuthPage";
 import ProfilePage from "./ProfilePage";
 

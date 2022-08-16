@@ -1,5 +1,5 @@
 {
-  "name": "myquiz",
+  "name": "quizee",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -13,14 +13,15 @@
     "@mui/material": "^5.9.2",
     "@reduxjs/toolkit": "^1.8.3",
     "firebase": "^9.9.1",
+    "path": "^0.12.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-firebase-hooks": "^5.0.3",
     "react-redux": "^8.0.2",
-    "react-router-dom": "^6.3.0",
-    "react-spinners": "^0.13.4"
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
+    "@types/node": "^18.7.5",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^1.3.0",

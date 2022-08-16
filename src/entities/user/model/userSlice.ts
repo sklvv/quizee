@@ -4,8 +4,8 @@ import {
   userLogIn,
   userPersistence,
   userSignUp,
-} from "../../../features/auth/model";
-import { logOut } from "../../../widgets/header/model";
+} from "@/features/auth";
+import { logOut } from "@/widgets/header/model";
 
 import { IUser } from "./userTypes";
 
