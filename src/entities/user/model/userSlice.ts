@@ -1,15 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   logInPopup,
+  setUser,
   userLogIn,
   userPersistence,
   userSignUp,
 } from "@/features/auth";
-import { logOut } from "@/widgets/header/model";
-
+import { logOut } from "@/widgets/header";
 import { IUser } from "./userTypes";
+import { deleteQuizee, fulfilledDeleteQuizee } from "@/features/library";
+import { toggleFav, fulfilledToggleFav } from "@/entities/quizee";
 
 const initialState: IUser = {
+  id: "",
   email: "",
   username: "",
   quizees: { favourite: [], user: [] },
@@ -23,13 +26,7 @@ const userSlice = createSlice({
     builder.addCase(userLogIn.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(userLogIn.fulfilled, (state: IUser, action) => {
-      state.email = action.payload.email;
-      state.username = action.payload.username;
-      state.quizees.user = action.payload.quizees.user;
-      state.quizees.favourite = action.payload.quizees.favourite;
-      state.isLoading = false;
-    });
+    builder.addCase(userLogIn.fulfilled, setUser);
     builder.addCase(userLogIn.rejected, (state: IUser) => {
       alert("Server Error!");
       state.isLoading = false;
@@ -37,13 +34,7 @@ const userSlice = createSlice({
     builder.addCase(userSignUp.pending, (state: IUser) => {
       state.isLoading = true;
     });
-    builder.addCase(userSignUp.fulfilled, (state: IUser, action) => {
-      state.email = action.payload.email;
-      state.username = action.payload.username;
-      state.quizees.user = action.payload.quizees.user;
-      state.quizees.favourite = action.payload.quizees.favourite;
-      state.isLoading = false;
-    });
+    builder.addCase(userSignUp.fulfilled, setUser);
     builder.addCase(userSignUp.rejected, (state: IUser) => {
       state.isLoading = false;
       alert("Server Error!");
@@ -56,6 +47,7 @@ const userSlice = createSlice({
       alert("Server Error!");
     });
     builder.addCase(logOut.fulfilled, (state: IUser) => {
+      state.id = "";
       state.email = "";
       state.username = "";
       state.quizees = { favourite: [], user: [] };
@@ -64,36 +56,20 @@ const userSlice = createSlice({
     builder.addCase(userPersistence.pending, (state: IUser) => {
       state.isLoading = true;
     });
-    builder.addCase(
-      userPersistence.fulfilled,
-      (state: IUser, action: PayloadAction<IUser>) => {
-        state.email = action.payload.email;
-        state.username = action.payload.username;
-        state.quizees.user = action.payload.quizees.user;
-        state.quizees.favourite = action.payload.quizees.favourite;
-        state.isLoading = false;
-      }
-    );
+    builder.addCase(userPersistence.fulfilled, setUser);
     builder.addCase(userPersistence.rejected, (state: IUser) => {
       state.isLoading = false;
     });
     builder.addCase(logInPopup.pending, (state: IUser) => {
       state.isLoading = true;
     });
-    builder.addCase(
-      logInPopup.fulfilled,
-      (state: IUser, action: PayloadAction<IUser>) => {
-        state.email = action.payload.email;
-        state.username = action.payload.username;
-        state.quizees.user = action.payload.quizees.user;
-        state.quizees.favourite = action.payload.quizees.favourite;
-        state.isLoading = false;
-      }
-    );
+    builder.addCase(logInPopup.fulfilled, setUser);
     builder.addCase(logInPopup.rejected, (state: IUser) => {
       state.isLoading = false;
       alert("Server Error!");
     });
+    builder.addCase(deleteQuizee.fulfilled, fulfilledDeleteQuizee);
+    builder.addCase(toggleFav.fulfilled, fulfilledToggleFav);
   },
 });
 

@@ -2,6 +2,7 @@ export { userSignUp } from "./model/userSignUp.action";
 export { userLogIn } from "./model/userLogIn.action";
 export { logInPopup } from "./model/logInPopup.action";
 export { userPersistence } from "./model/userPersistence.action";
+export { setUser } from "./model/setUser.reducer";
 
 export { default as AuthTitle } from "./ui/title";
 export { default as AuthForm } from "./ui/form";

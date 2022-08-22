@@ -1,6 +1,6 @@
 import { Box, TextField, ToggleButton, ToggleButtonGroup } from "@mui/material";
 
-import { useAppDispatch, useAppSelector } from "../../../../shared/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { setFilter, setSearchQuery } from "../model/librarySlice";
 import { quizeeType } from "../model/libraryTypes";
 

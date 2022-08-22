@@ -1,10 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
 import { signInWithPopup, OAuthProvider } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth, database } from "../../../shared/config";
-import { IQuizee } from "../../../entities/quizee/model/quizeeTypes";
-import { IUser } from "../../../entities/user/model/userTypes";
+import { auth, database } from "@/shared/config";
+import { getQuizeeFromDB } from "@/entities/quizee";
+import { IUser, IUserInDB } from "@/entities/user";
 
 export const logInPopup = createAsyncThunk<IUser>(
   "user/loginpopup",
@@ -17,50 +16,34 @@ export const logInPopup = createAsyncThunk<IUser>(
     // If user exist
 
     if (userSnap.exists()) {
-      const rawUser = userSnap.data() as IUser; // request for user
-
+      const rawUser = userSnap.data() as IUserInDB; // request for user
       const rawFavQuizees = rawUser.quizees.favourite; // links to quizees
       const rawUsersQuizees = rawUser.quizees.user; // links to quizees
 
-      const finalFavQuizees: IQuizee[] = [];
-      const finalUsersQuizees: IQuizee[] = [];
-      try {
-        for (const quizeeId of rawUsersQuizees) {
-          const quizeeRef = doc(database, "quizees", `${quizeeId}`);
-          const quizeeSnap = await getDoc(quizeeRef);
-          if (quizeeSnap.exists()) {
-            const quizee = quizeeSnap.data() as IQuizee;
-            finalUsersQuizees.push(quizee);
-          }
-        }
-
-        for (const quizeeId of rawFavQuizees) {
-          const quizeeRef = doc(database, "quizees", `${quizeeId}`);
-          const quizeeSnap = await getDoc(quizeeRef);
-          if (quizeeSnap.exists()) {
-            const quizee = quizeeSnap.data() as IQuizee;
-            finalFavQuizees.push(quizee);
-          }
-        }
-      } catch (error) {
-        console.log(error);
-      }
+      const { favQuizees, userQuizees } = await getQuizeeFromDB(
+        userRef,
+        rawUsersQuizees,
+        rawFavQuizees
+      );
 
       return {
         ...rawUser,
-        quizees: { user: finalUsersQuizees, favourite: finalFavQuizees },
+        id: response.user.uid,
+        quizees: { user: userQuizees, favourite: favQuizees },
       };
     }
 
     // If user doesnt exist creating a new one
     else {
       await setDoc(userRef, {
+        id: response.user.uid,
         email: response.user.email,
         username: response.user.displayName || response.user.email,
         quizees: { user: [], fav: [] },
       });
       return {
         email: response.user.email,
+        id: response.user.uid,
         username: response.user.displayName || response.user.email,
         quizees: {
           favourite: [],

@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 import { useAppSelector } from "@/shared/lib/hooks";
-import QuizeeCard from "@/entities/quizee/ui/QuizeeCard";
+import QuizeeCard from "./QuizeeCard";
 
 const Quizees = () => {
   const { favourite, user } = useAppSelector((state) => state.user.quizees);
@@ -20,6 +20,7 @@ const Quizees = () => {
                     imgUrl={quizee.mainImgUrl}
                     plays={quizee.plays}
                     title={quizee.title}
+                    quizeeId={quizee.id}
                     key={quizee.id}
                   />
                 );
@@ -33,6 +34,7 @@ const Quizees = () => {
                   imgUrl={quizee.mainImgUrl}
                   plays={quizee.plays}
                   title={quizee.title}
+                  quizeeId={quizee.id}
                   key={quizee.id}
                 />
               );
@@ -47,6 +49,7 @@ const Quizees = () => {
                   imgUrl={quizee.mainImgUrl}
                   plays={quizee.plays}
                   title={quizee.title}
+                  quizeeId={quizee.id}
                   key={quizee.id}
                 />
               );
@@ -60,6 +63,7 @@ const Quizees = () => {
                 imgUrl={quizee.mainImgUrl}
                 plays={quizee.plays}
                 title={quizee.title}
+                quizeeId={quizee.id}
                 key={quizee.id}
               />
             );

@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { userLogIn, userSignUp } from "../..";
 
 const AuthForm = () => {
-  const { username, isLoading } = useAppSelector((state) => state.user);
+  const { username } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -27,9 +27,7 @@ const AuthForm = () => {
       navigate("/");
     }
   }, [username]);
-  if (isLoading) {
-    return <>loading</>;
-  }
+
   return (
     <FormControl
       sx={{ mt: "26px" }}

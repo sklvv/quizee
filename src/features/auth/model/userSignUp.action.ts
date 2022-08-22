@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { auth, database } from "../../../shared/config";
-
-import { IAuth, IUser } from "../../../entities/user/model/userTypes";
+import { auth, database } from "@/shared/config";
+import { IAuth, IUser } from "@/entities/user";
 
 export const userSignUp = createAsyncThunk<
   IUser,
@@ -15,16 +14,18 @@ export const userSignUp = createAsyncThunk<
   // set user to firestore
   const userRef = doc(database, "users", `${response.user.uid}`);
   await setDoc(userRef, {
+    id: response.user.uid,
     email: response.user.email,
     username: response.user.displayName || response.user.email,
     quizees: {
-      fav: [],
+      favourite: [],
       user: [],
     },
   });
 
   return {
     email: response.user.email,
+    id: response.user.uid,
     username: response.user.displayName || response.user.email,
     quizees: {
       favourite: [],

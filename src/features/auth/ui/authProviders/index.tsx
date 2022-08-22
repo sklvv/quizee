@@ -1,6 +1,5 @@
 import { Button, Typography } from "@mui/material";
 import { useAppDispatch } from "@/shared/lib/hooks";
-
 import { logInPopup } from "../..";
 
 const AuthProviders = () => {

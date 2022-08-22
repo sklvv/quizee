@@ -1,4 +1,5 @@
 export interface IQuizee {
+  category: "none" | "math" | "history" | "art" | "music";
   id: string;
   author: string;
   mainImgUrl: string | null;

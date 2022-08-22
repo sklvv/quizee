@@ -12,7 +12,7 @@ function App() {
   const { isLoading, email } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const [user, loading] = useAuthState(auth);
-
+  // im in vim!
   if (!email && user && !isLoading) {
     dispatch(userPersistence(user.uid));
   }
