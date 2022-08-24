@@ -17,7 +17,7 @@ import { toggleFav } from "@/entities/quizee";
 interface IProps {
   title: string;
   imgUrl: string | null;
-  isPrivate: boolean;
+  visibility: "public" | "private";
   author: string;
   plays: number;
   quizeeId: string;
@@ -25,7 +25,7 @@ interface IProps {
 const QuizeeCard: React.FC<IProps> = ({
   title,
   imgUrl,
-  isPrivate,
+  visibility,
   author,
   plays,
   quizeeId,
@@ -40,6 +40,7 @@ const QuizeeCard: React.FC<IProps> = ({
 
   const isFav = favourite.some((quizee) => quizee.id === quizeeId);
   const isUser = user.some((quizee) => quizee.id === quizeeId);
+  const isPrivate = visibility === "private";
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };

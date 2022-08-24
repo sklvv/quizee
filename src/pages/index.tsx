@@ -4,6 +4,7 @@ import { Header } from "@/widgets/header";
 import { PrivateRoute } from "@/shared/lib/hocs";
 import AuthPage from "./AuthPage";
 import ProfilePage from "./ProfilePage";
+import { CreatorPage } from "./CreatorPage";
 
 const LibraryPage = lazy(() => import("./LibraryPage"));
 const DiscoverPage = lazy(() => import("./DiscoverPage"));
@@ -37,6 +38,7 @@ const Routing = () => {
               </PrivateRoute>
             }
           />
+          <Route path="creator/:quizeeId" element={<CreatorPage />} />
           <Route path="/login" element={<AuthPage />} />
           <Route path="/signup" element={<AuthPage />} />
         </Route>

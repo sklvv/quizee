@@ -16,7 +16,7 @@ const Quizees = () => {
                 return (
                   <QuizeeCard
                     author={quizee.author}
-                    isPrivate={quizee.private}
+                    visibility={quizee.visibility}
                     imgUrl={quizee.mainImgUrl}
                     plays={quizee.plays}
                     title={quizee.title}
@@ -30,7 +30,7 @@ const Quizees = () => {
               return (
                 <QuizeeCard
                   author={quizee.author}
-                  isPrivate={quizee.private}
+                  visibility={quizee.visibility}
                   imgUrl={quizee.mainImgUrl}
                   plays={quizee.plays}
                   title={quizee.title}
@@ -45,7 +45,7 @@ const Quizees = () => {
               return (
                 <QuizeeCard
                   author={quizee.author}
-                  isPrivate={quizee.private}
+                  visibility={quizee.visibility}
                   imgUrl={quizee.mainImgUrl}
                   plays={quizee.plays}
                   title={quizee.title}
@@ -59,7 +59,7 @@ const Quizees = () => {
             return (
               <QuizeeCard
                 author={quizee.author}
-                isPrivate={quizee.private}
+                visibility={quizee.visibility}
                 imgUrl={quizee.mainImgUrl}
                 plays={quizee.plays}
                 title={quizee.title}

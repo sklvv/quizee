@@ -8,7 +8,11 @@ import {
 } from "@/features/auth";
 import { logOut } from "@/widgets/header";
 import { IUser } from "./userTypes";
-import { deleteQuizee, fulfilledDeleteQuizee } from "@/features/library";
+import {
+  createNewQuizee,
+  deleteQuizee,
+  fulfilledDeleteQuizee,
+} from "@/features/library";
 import { toggleFav, fulfilledToggleFav } from "@/entities/quizee";
 
 const initialState: IUser = {
@@ -70,6 +74,9 @@ const userSlice = createSlice({
     });
     builder.addCase(deleteQuizee.fulfilled, fulfilledDeleteQuizee);
     builder.addCase(toggleFav.fulfilled, fulfilledToggleFav);
+    builder.addCase(createNewQuizee.fulfilled, (state, action) => {
+      state.quizees.user.push(action.payload);
+    });
   },
 });
 

@@ -2,10 +2,10 @@ export interface IQuizee {
   category: "none" | "math" | "history" | "art" | "music";
   id: string;
   author: string;
-  mainImgUrl: string | null;
+  mainImgUrl: string;
   players: number;
   plays: number;
-  private: boolean;
+  visibility: "public" | "private";
   title: string;
   questions: IQuestion[];
 }
