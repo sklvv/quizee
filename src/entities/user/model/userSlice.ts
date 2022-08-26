@@ -75,7 +75,7 @@ const userSlice = createSlice({
     builder.addCase(deleteQuizee.fulfilled, fulfilledDeleteQuizee);
     builder.addCase(toggleFav.fulfilled, fulfilledToggleFav);
     builder.addCase(createNewQuizee.fulfilled, (state, action) => {
-      state.quizees.user.push(action.payload);
+      state.quizees.user.unshift(action.payload);
     });
   },
 });

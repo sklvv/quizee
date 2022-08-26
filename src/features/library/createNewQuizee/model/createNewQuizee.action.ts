@@ -18,7 +18,7 @@ export const createNewQuizee = createAsyncThunk<IQuizee, IArg>(
     const userRef = doc(database, "users", `${uid}`);
     const userSnap = await getDoc(userRef);
     const data = userSnap.data() as IUserInDB; // request for user
-    data.quizees.user.push(id);
+    data.quizees.user.unshift(id);
     await updateDoc(userRef, {
       ...data,
       quizees: {
