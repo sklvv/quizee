@@ -1,11 +1,8 @@
 import { Box, Icon, IconButton, Menu, MenuItem } from "@mui/material";
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/shared/lib/hooks";
-
 import { logOut } from "@/widgets/header";
-
 import ActionButton from "./ActionButton";
 
 const UserActions = () => {
@@ -23,6 +20,14 @@ const UserActions = () => {
     navigate("/profile");
     handleClose();
   };
+  const handleDiscover = () => {
+    navigate("/discover");
+    handleClose();
+  };
+  const handleLibrary = () => {
+    navigate("/");
+    handleClose();
+  };
   const handleLogOut = async () => {
     await dispatch(logOut());
     handleClose();
@@ -34,8 +39,12 @@ const UserActions = () => {
       justifyContent="space-between"
       width="20rem"
     >
-      <ActionButton icon="near_me" title="Discover" />
-      <ActionButton icon="format_list_bulleted" title="Library" />
+      <ActionButton icon="near_me" title="Discover" onClick={handleDiscover} />
+      <ActionButton
+        icon="format_list_bulleted"
+        title="Library"
+        onClick={handleLibrary}
+      />
       <IconButton color="inherit" size="medium" onClick={handleClick}>
         <Icon>person_filled</Icon>
       </IconButton>
