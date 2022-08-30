@@ -10,8 +10,8 @@ export interface IQuizee {
   questions: IQuestion[];
 }
 export interface IQuestion {
-  queImgUrl: string | null;
-  answerOption: "single" | "multiple" | null;
+  queImgUrl: string;
+  answerOption: "single" | "multiple";
   answerVariants: [string, string, string, string] | [string, string];
   points: "standart" | "double";
   timeLimit: 10 | 20 | 30 | 60;
