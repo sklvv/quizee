@@ -55,6 +55,9 @@ const QuizeeCard: React.FC<IProps> = ({
     await dispatch(deleteQuizee(quizeeId));
     handleClose();
   };
+  const handleEdit = () => {
+    navigate(`/creator/${quizeeId}`);
+  };
   return (
     <Box sx={styles.container}>
       <Box width="180px" height="120px" sx={styles.img}>
@@ -96,9 +99,12 @@ const QuizeeCard: React.FC<IProps> = ({
           </>
         </Box>
         <Box>
-          <Button variant="outlined" sx={{ mr: "4px" }}>
-            Edit
-          </Button>
+          {isUser && (
+            <Button variant="outlined" sx={{ mr: "4px" }} onClick={handleEdit}>
+              Edit
+            </Button>
+          )}
+
           <Button variant="contained">Start</Button>
         </Box>
       </Box>
