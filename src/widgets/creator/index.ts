@@ -5,5 +5,6 @@ export {
   setTitle,
   setCurrentQuestion,
   addNew,
+  setQuizee,
 } from "./model/creatorSlice";
 export type { ICreator } from "./model/creatorTypes";

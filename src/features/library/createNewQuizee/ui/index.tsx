@@ -17,7 +17,7 @@ import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { setImgUrl, setPrivate, setTitle } from "@/pages/CreatorPage";
+import { setImgUrl, setPrivate, setTitle } from "@/widgets/creator";
 import { createNewQuizee } from "../model/createNewQuizee.action";
 
 const CreateNew = () => {
