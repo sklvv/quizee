@@ -1,22 +1,25 @@
-import { AppBar, Toolbar } from "@mui/material";
 import { useAppSelector } from "@/shared/lib/hooks";
-
+import { Outlet, useLocation } from "react-router-dom";
+import { AppBar, Toolbar } from "@mui/material";
+import Logo from "./Logo/Logo";
+import UserActions from "./HeaderActions/UserActions";
+import CreatorActions from "./HeaderActions/CreatorActions";
 import Layout from "@/shared/ui/layout";
-import Logo from "./logo";
-import UserActions from "./userActions";
 
 const Header = () => {
   const { email } = useAppSelector((state) => state.user);
-
+  const { pathname } = useLocation();
+  const isInCreator = pathname.includes("creator");
   return (
     <>
       <AppBar position="sticky">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Logo />
-          {email && <UserActions />}
+          {email && !isInCreator && <UserActions />}
+          {isInCreator && <CreatorActions />}
         </Toolbar>
       </AppBar>
-      <Layout />
+      {isInCreator ? <Outlet /> : <Layout />}
     </>
   );
 };
