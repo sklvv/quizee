@@ -10,6 +10,8 @@ export interface IQuizee {
   questions: IQuestion[];
 }
 export interface IQuestion {
+  id: string;
+  rightAnswer: number[];
   queImgUrl: string;
   answerOption: "single" | "multiple";
   answerVariants: [string, string, string, string] | [string, string];
