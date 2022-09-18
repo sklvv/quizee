@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { userSlice } from "@/entities/user";
 import { librarySlice } from "@/features/library";
 import { themeSlice } from "@/shared/config";
-import { creatorSlice } from "@/pages/CreatorPage";
+import { creatorSlice } from "@/widgets/creator";
 
 export const store = configureStore({
   reducer: {
