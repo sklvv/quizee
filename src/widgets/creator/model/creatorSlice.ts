@@ -10,7 +10,7 @@ const initialState: ICreator = {
   visibility: "public",
   title: "",
   questions: [],
-  currentQuestion: 1,
+  currentQuestion: 0,
   players: 0,
   plays: 0,
 };
