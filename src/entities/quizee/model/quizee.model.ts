@@ -1,8 +1,18 @@
+export interface IAnswers {
+    author: string;
+    answer: string;
+    date: string;
+}
+
 export interface IQuestion {
-  name: string;
+    content: string;
+    answers: IAnswers[];
 }
 
 export interface IQuizee {
-  title: string;
-  questions: IQuestion[];
+    id: string;
+    title: string;
+    questions: IQuestion[];
+    author: string;
+    date: Date;
 }
